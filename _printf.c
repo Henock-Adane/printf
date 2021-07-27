@@ -86,7 +86,3 @@ void print_char(char *ch, int *inc1, int *inc2)
 	*inc1 = *inc1 + 1;
 	*inc2 = *inc2 + 1;
 }
-
-		}
-	}
-}
