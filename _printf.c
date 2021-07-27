@@ -22,18 +22,19 @@ int _printf(const char *format, ...)
 			{
 				char c = '%';
 
-				print_char(&c, &format, &count);
+				print_char(&c, &count);
+				format++;
 			}
 			if (*(format + 1) == 'c')
 			{
 				char st = va_arg(args, int);
 
-				print_char(&st, &format, &count);
+				print_char(&st, &count);
+				format++;
 			}
 			if (*(format + 1) == 's')
 			{
 				char *string;
-				int i;
 
 				string = va_arg(args, char *);
 
@@ -60,12 +61,13 @@ int _printf(const char *format, ...)
 void print_string(char *string, int *counter)
 {
 	int strcount = 0;
+	int i = 0;
 
 	if (string == NULL)
 	{
 		string = "(null)";
 	}
-	for (int i = 0; string[i] != '\0'; i++)
+	for (i = 0; string[i] != '\0'; i++)
 	{
 		write(1, string + i, 1);
 		strcount++;
@@ -80,9 +82,8 @@ void print_string(char *string, int *counter)
  * @inc2: a value to be incremented for counting.
  * Return: no value.
  */
-void print_char(char *ch, int *inc1, int *inc2)
+void print_char(char *ch, int *inc1)
 {
 	write(1, ch, 1);
 	*inc1 = *inc1 + 1;
-	*inc2 = *inc2 + 1;
 }
