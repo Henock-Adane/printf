@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 				print_char(&c, &count), format++;
 			}
 			else if (*(format) == 'c')
-			{char st = va_arg(args, int);
+			{char st = (char)va_arg(args, int);
 
 				print_char(&st, &count), format++;
 			}
