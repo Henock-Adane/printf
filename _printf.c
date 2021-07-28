@@ -15,39 +15,39 @@ int _printf(const char *format, ...)
 	int count = 0;
 
 	va_start(args, format);
+	if (!format || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 	while (*format != '\0')
 	{
 		if (*format == '%')
-		{
-			if (*(format + 1) == '%')
+		{format++;
+			if (*(format) == ' ')
 			{
-				char c = '%';
-
-				print_char(&c, &count);
-				format++;
+				while (*format == ' ')
+					format++;
 			}
-			if (*(format + 1) == 'c')
-			{
-				char st = va_arg(args, int);
+			if (*(format) == '%')
+			{char c = '%';
 
-				print_char(&st, &count);
-				format++;
+				print_char(&c, &count), format++;
 			}
-			if (*(format + 1) == 's')
-			{
-				char *string;
+			else if (*(format) == 'c')
+			{char st = va_arg(args, int);
+
+				print_char(&st, &count), format++;
+			}
+			else if (*(format) == 's')
+			{char *string;
 
 				string = va_arg(args, char *);
 
-				print_string(string, &count);
-				format++;
+				print_string(string, &count), format++;
 			}
 		}
 		else
 		{
-			print_char(format, &count);
+			print_char(format, &count), ++format;
 		}
-		++format;
 	}
 	va_end(args);
 	return (count);
@@ -78,7 +78,6 @@ void print_string(char *string, int *counter)
  * print_char - func that prints a character.
  * @ch: the character to be printed.
  * @inc1: a value to be incremented for formatting.
- * @inc2: a value to be incremented for counting.
  * Return: no value.
  */
 int print_char(const char *ch, int *inc1)
