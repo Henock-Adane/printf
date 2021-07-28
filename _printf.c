@@ -80,8 +80,8 @@ void print_string(char *string, int *counter)
  * @inc2: a value to be incremented for counting.
  * Return: no value.
  */
-void print_char(const char *ch, int *inc1)
+int print_char(const char *ch, int *inc1)
 {
-	_putchar(ch);
 	*inc1 = *inc1 + 1;
+	return (write(1, ch, 1));
 }
