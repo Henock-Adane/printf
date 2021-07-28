@@ -57,7 +57,7 @@ int _printf(const char *format, ...)
  * @counter: an int counter for the string.
  * Return: no value.
  */
-void print_string(const char *string, int *counter)
+void print_string(char *string, int *counter)
 {
 	int strcount = 0;
 	int i = 0;
@@ -81,7 +81,7 @@ void print_string(const char *string, int *counter)
  * @inc2: a value to be incremented for counting.
  * Return: no value.
  */
-void print_char(char *ch, int *inc1)
+void print_char(const char *ch, int *inc1)
 {
 	write(1, ch, 1);
 	*inc1 = *inc1 + 1;
