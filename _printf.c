@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <limits.h>
+#include <unistd.h>
 /**
  * _printf - Modified Printf function that produces output with format.
  * @format: references to the desired format to be Printed.
