@@ -82,6 +82,6 @@ void print_string(char *string, int *counter)
  */
 void print_char(const char *ch, int *inc1)
 {
-	write(1, ch, 1);
+	_putchar(ch);
 	*inc1 = *inc1 + 1;
 }
