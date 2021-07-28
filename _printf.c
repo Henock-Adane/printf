@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			print_char(format,&count);
+			print_char(format, &count);
 		}
 		++format;
 	}
@@ -57,7 +57,7 @@ int _printf(const char *format, ...)
  * @counter: an int counter for the string.
  * Return: no value.
  */
-void print_string(char *string, int *counter)
+void print_string(const char *string, int *counter)
 {
 	int strcount = 0;
 	int i = 0;
