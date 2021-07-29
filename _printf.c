@@ -65,7 +65,7 @@ void print_string(char *string, int *counter)
 
 	if (string == NULL)
 	{
-		string = "(null)";
+	  string[] = "(null)";
 	}
 	for (i = 0; string[i] != '\0'; i++)
 	{
