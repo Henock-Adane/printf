@@ -26,6 +26,8 @@ int _printf(const char *format, ...)
 
 				print_char(&p, &count), print_char(&ex, &count);
 				format++; }
+			if (*(format) == '*')
+				return (-1);
 			if (*(format) == ' ' || *(format) == '#')
 			{
 				while (*format == ' ' || '#')
@@ -33,13 +35,11 @@ int _printf(const char *format, ...)
 			if (*(format) == '%' || *(format) == 'z')
 			{char c = '%';
 
-				print_char(&c, &count), format++;
-			}
+				print_char(&c, &count), format++; }
 			else if (*(format) == 'c')
 			{char st = (char)va_arg(args, int);
 
-				print_char(&st, &count), format++;
-			}
+				print_char(&st, &count), format++; }
 			else if (*(format) == 's')
 			{char *string;
 				string = va_arg(args, char *);
