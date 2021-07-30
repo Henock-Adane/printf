@@ -21,6 +21,11 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{format++;
+			if (*(format) == '#')
+			{
+				while (*format == '#')
+					format++;
+			}
 			if (*(format) == ' ')
 			{
 				while (*format == ' ')
