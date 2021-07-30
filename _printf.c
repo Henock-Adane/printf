@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 				while (*format == ' ')
 					format++;
 			}
-			if (*(format) == '%')
+			if (*(format) == '%' || *(format) == 'z')
 			{char c = '%';
 
 				print_char(&c, &count), format++;
@@ -70,7 +70,7 @@ void print_string(char *string, int *counter)
 
 	if (string == NULL)
 	{
-	  string[] = "(null)";
+	  string = "(null)";
 	}
 	for (i = 0; string[i] != '\0'; i++)
 	{
