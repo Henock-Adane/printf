@@ -23,8 +23,8 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{format++;
 			if (*format == 'K' || *format == '!')
-			{print_char((format-1), &count);
-				print_char(format,&count), format++; }
+			{print_char((format - 1), &count);
+				print_char(format, &count), format++; }
 			if (*(format) == ' ' || *(format) == '#')
 			{
 				while (*format == ' ' || '#')
