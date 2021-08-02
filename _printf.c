@@ -12,7 +12,6 @@
 int _printf(const char *format, ...)
 {	va_list args;
 	int count = 0;
-	const char *charset = "RK!";
 
 	va_start(args, format);
 	if (!format || (format[0] == '%' && format[1] == '\0'))
@@ -23,7 +22,9 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{format++;
-			charprint(format, charset, &count);
+			if (*format == 'K' || *format == '!')
+			{print_char((format-1), &count);
+				print_char(format,&count), format++; }
 			if (*(format) == ' ' || *(format) == '#')
 			{
 				while (*format == ' ' || '#')
@@ -79,18 +80,4 @@ int print_char(const char *ch, int *inc1)
 {
 	*inc1 = *inc1 + 1;
 	return (write(1, ch, 1));
-}
-
-void charprint (const char *formatpt, const char *charsetpt, int *countpt)
-{
-	int x;
-
-	for (x = 0; charsetpt[x] != '\0'; x++)
-	{
-		if (*formatpt == charsetpt[x])
-		{char p = '%';
-			print_char(&p, countpt);
-			print_char(charsetpt + x, countpt);
-			formatpt++; } }
-
 }
